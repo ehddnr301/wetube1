@@ -1,7 +1,7 @@
 {
   "name": "wetube",
   "version": "1.0.0",
-  "main": "init.js",
+  "main": "build/init.js",
   "license": "MIT",
   "scripts": {
     "dev:server": "tsc-watch --onSuccess \" node build/init.js\" ",
@@ -11,8 +11,7 @@
     "prebuild": "rm -rf build",
     "copyAll": "cp -R src/static build && cp -R src/views build",
     "build": "npm run build:server && npm run build:assets && npm run copyAll",
-    "start": "node build/init.js",
-    "prestart": "npm run build"
+    "start": "node build/init.js"
   },
   "dependencies": {
     "@babel/cli": "^7.8.4",
@@ -58,6 +57,7 @@
     "cross-env": "^7.0.2",
     "css-loader": "^3.4.2",
     "dotenv": "^8.2.0",
+    "ejs": "^3.0.1",
     "express": "^4.17.1",
     "express-flash": "^0.0.2",
     "express-session": "^1.17.0",
@@ -85,6 +85,7 @@
     "webpack-cli": "^3.3.11"
   },
   "devDependencies": {
+    "babel-plugin-import": "^1.13.0",
     "tsc-watch": "^4.2.3",
     "tsconfig-paths": "^3.9.0",
     "tslint-config-prettier": "^1.18.0"
