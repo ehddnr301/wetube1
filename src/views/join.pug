@@ -1,0 +1,12 @@
+extends layouts/main
+
+block content
+    .form__wrapper
+        .form-container.join
+            form(action=routes.join, method="post")
+                input(type="text", name="name", placeholder="Full Name",maxlength="20",required=true)        
+                input(type="email", name="email", placeholder="Email",maxlength="20",required=true)
+                input(type="password", name="password", placeholder="Password",maxlength="20",required=true)
+                input(type="password", name="password2", placeholder="Verify Password",maxlength="20",required=true)
+                input(type="submit",value="Join Now")
+        include partials/socialLogin

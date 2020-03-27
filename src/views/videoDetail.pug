@@ -1,0 +1,42 @@
+extends layouts/main
+include mixins/videoPlayer
+
+block content
+    .video-detail__container
+        .video__player
+            +videoPlayer({
+            src:video.fileUrl
+        })
+        .video__info
+            if loggedUser && String(video.creator.id) === loggedUser.id
+                a(href=routes.editVideo(video.id))
+                    button Edit video
+            h5.video__title=video.title
+            p.video__description=video.description
+            if video.views === 1
+                span.video__views 1 view
+            else 
+                span.video__views #{video.views} views
+            .video__author
+                |Uploaded by 
+                a(href=routes.userDetail(video.creator.id))=video.creator.name    
+        .video__comments
+            if video.comments.length === 1
+                span.video__comment-number
+                    span#jsCommentNumber 1
+                    |  comment
+            else
+                span.video__comment-number
+                    span#jsCommentNumber=video.comments.length
+                    |  comments
+            form.add__comment#jsAddComment
+                input(type="text", placeholder="Add a comment" maxlength="25")
+            ul.video__comments-list#jsCommentList
+                each comment in video.comments.reverse()
+                    li
+                        //- img(src=comment.creator.avatarUrl && comment.creator.avatarUrl.includes('moonvillageassociation') || comment.creator.avatarUrl.includes('githubuser')? comment.creator.avatarUrl : `http://localhost:4000/${comment.creator.avatarUrl}`, alt="avatar")
+                        img(src=comment.creator.avatarUrl, alt="avatar")
+                        span=comment.text 
+                        if loggedUser && String(comment.creator.id) === loggedUser.id
+                            span(id=comment.id).jsDeleteBtn
+                                <i class="fas fa-trash-alt"></i>

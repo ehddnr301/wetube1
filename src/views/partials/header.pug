@@ -1,0 +1,28 @@
+header.header
+    .header__wrapper
+        .header__column
+            a(href=routes.home)
+                i.fab.fa-youtube
+                span Wetube  NomadCoders
+        .header__column
+            form(action=routes.search, method="get")
+                input(type="text", placeholder="Search by term...",maxlength="20", name="term")
+        .header__column
+            .info
+                .info__one Nomadcoders
+                .info__two Ehddnr
+                .info__three Typescript
+    .header__nav
+        ul
+            if !loggedUser
+                li
+                    a(href=routes.join) Join
+                li
+                    a(href=routes.login) Log In
+            else 
+                li
+                    a(href=`/videos${routes.upload}`) Upload
+                li
+                    a(href=routes.me) Profile
+                li
+                    a(href=routes.logout) Log Out
