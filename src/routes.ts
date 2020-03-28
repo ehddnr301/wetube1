@@ -28,7 +28,8 @@ const GITHUB_CALLBACK = "/auth/github/callback";
 
 // Kakao
 
-const KAKAO_CALLBACK = "http://localhost:4000/auth/kakao/callback";
+const KAKAO_CALLBACK =
+  "https://vast-journey-52774.herokuapp.com/auth/kakao/callback";
 const KAKAO = `https://kauth.kakao.com/oauth/authorize?client_id=${process.env.KAKAO_KEY}&redirect_uri=${KAKAO_CALLBACK}&response_type=code`;
 const K_CALLBACK = "/auth/kakao/callback";
 
